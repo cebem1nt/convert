@@ -24,6 +24,9 @@ Permite:
 - [pandas](https://pandas.pydata.org/) + `openpyxl` para CSV/XLSX
 - [pydub](https://github.com/jiaaro/pydub) para audio
 - [moviepy](https://zulko.github.io/moviepy/) para GIFs
-- [`ffmpeg`](https://ffmpeg.org/) para compresión de MP4
 
 ---
+
+## Requisitos
+
+- Python 3.9 o superior
