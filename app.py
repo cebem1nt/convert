@@ -2,7 +2,6 @@ import streamlit as st
 from converters.images import convert_image
 from converters.tables import csv_to_xlsx, xlsx_to_csv
 from converters.audio import audio_convert
-from converters.video import mp4_to_gif, compress_mp4_ffmpeg
 
 st.set_page_config(page_title="File Converter")
 
@@ -12,8 +11,7 @@ MODES = {
     "CSV a XLSX": "csv_xlsx",
     "XLSX a CSV": "xlsx_csv",
     "WAV a MP3": "wav_mp3",
-    "MP3 a WAV": "mp3_wav",
-    #"MP4 a GIF": "mp4_gif",
+    "MP3 a WAV": "mp3_wav"
 }
 
 st.title("File Converter")
@@ -53,20 +51,6 @@ if uploaded and st.button("Convertir"):
     elif mode == "mp3_wav":
         result_bytes = audio_convert(file_bytes, "mp3", "wav")
         out_name = base_name + ".wav"
-
-    elif mode == "mp4_gif":
-        try:
-            result_bytes = mp4_to_gif(file_bytes)
-            out_name = base_name + ".gif"
-        except RuntimeError as e:
-            st.error(f"Ocurrió un error al generar el GIF: {e}")   
-    elif mode == "mp4_compress":
-        try:
-            result_bytes = compress_mp4_ffmpeg(file_bytes)
-            out_name = base_name + "_compressed.mp4"
-        except RuntimeError as e:
-            st.error(f"Ocurrió un error al comprimir el video: {e}")
-
 
     if result_bytes:
         st.success("Conversión completa.")

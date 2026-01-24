@@ -13,9 +13,6 @@ Permite:
 - Audio:
   - WAV → MP3
   - MP3 → WAV
-- Video:
-  - MP4 → GIF
-  - MP4 → MP4 comprimido (usando `ffmpeg`)
 
 ---
 
@@ -34,11 +31,3 @@ Permite:
 ## Requisitos
 
 - Python 3.9 o superior
-- `ffmpeg` instalado y disponible en el `PATH` del sistema (para:
-  - compresión de MP4
-  - parte de funciones de audio/video)
-
-### Verificar `ffmpeg`
-
-```bash
-ffmpeg -version
