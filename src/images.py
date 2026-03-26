@@ -27,8 +27,8 @@ class Image(Converter):
 
         if HAS_FFMPEG:
             subprocess.run(
-                ["ffmpeg", "-y", "-i", self.source[0], self.target[0]],
-                stdout=subprocess.PIPE, stderr=subprocess.PIPE
+                ["ffmpeg", "-hide_banner", "-loglevel", "warning",
+                    "-y", "-i", self.source[0], self.target[0]],
             )
 
         elif HAS_PIL:

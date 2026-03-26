@@ -3,8 +3,9 @@ import argparse, os, sys
 from src.audio import Audio
 from src.images import Image
 from src.documents import Documents
+from src.video import Video
 
-converters = [Audio, Image, Documents]
+converters = [Audio, Image, Documents, Video]
 
 def main(args: argparse.Namespace):
     if not os.path.exists(args.source):
