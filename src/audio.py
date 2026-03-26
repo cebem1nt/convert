@@ -2,17 +2,11 @@ from shutil import which
 from src.converter import Converter
 import subprocess
 
-# def audio_convert(file_bytes: bytes, src_format: str, target_format: str) -> bytes:
-#     audio = AudioSegment.from_file(BytesIO(file_bytes), format=src_format)
-#     output = BytesIO()
-#     audio.export(output, format=target_format)
-#     return output.getvalue()
-
 HAS_PYDUB = True
 HAS_FFMPEG = which("ffmpeg")
 
 try:
-    import AudioSegment
+    from pydub import AudioSegment
 except:
     HAS_PYDUB = False
 
@@ -20,9 +14,13 @@ except:
 class Audio(Converter):
     def __init__(self, source: str, target: str):
         super().__init__(source, target)
-        self.supported = (
+
+        self.supported = [
             'wav', 'mp3', 'ogg', 'flac', 'm4a', 'aiff', 'au', 'raw', 'wma'
-        )
+        ]
+
+        if HAS_FFMPEG:
+            self.supported += ['aac', 'ac3', 'alac', 'amr', 'dts', 'opus', 'pcm']
 
     def convert(self):
         if not self.can_convert():
@@ -30,6 +28,13 @@ class Audio(Converter):
 
         if HAS_FFMPEG:
             subprocess.run(
-                ["ffmpeg", "-i", self.source[0], self.target[0]]
+                ["ffmpeg", "-y", "-i", self.source[0], self.target[0]],
+                stdout=subprocess.PIPE, stderr=subprocess.PIPE
             )
-            
+
+        elif HAS_PYDUB:
+            segment = AudioSegment.from_file(self.source[0])
+            segment.export(self.target[0], self.target[1])
+
+        else:
+            print("Could not convert, no backend found.")

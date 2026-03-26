@@ -9,14 +9,17 @@ def main(args: argparse.Namespace):
         sys.stderr.write(f'File "{args.source}" does not exist\n')
         return 1
 
+    args.target.lstrip('.')
     target_file = args.source.rsplit('.', 1)[0]
-    target_file += '.' + args.target
+    target_file += args.target
 
     for Converter in converters:
         c = Converter(args.source, target_file)
 
         if c.can_convert():
             return c.convert()
+    else:
+        print(f"Could not convert {args.source} to {args.target}, unsupported extension(s)")
 
     return 0
 

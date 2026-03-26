@@ -9,7 +9,7 @@ class Converter:
         self.target = (
             target, get_extension(target)
         )
-        self.supported = ()
+        self.supported = []
 
     def can_convert(self):
         return (self.source[1] in self.supported) and \
