@@ -1,5 +1,5 @@
 from shutil import which
-from src.converter import Converter
+from src.aconverter import Converter
 import subprocess
 
 HAS_PYDUB = True

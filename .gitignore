@@ -8,3 +8,5 @@ venv/
 *.flac
 *.jpg
 *.png
+*.pdf
+*.odt

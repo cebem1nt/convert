@@ -2,17 +2,17 @@
 import argparse, os, sys
 from src.audio import Audio
 from src.images import Image
+from src.documents import Documents
 
-converters = [Audio, Image]
+converters = [Audio, Image, Documents]
 
 def main(args: argparse.Namespace):
     if not os.path.exists(args.source):
         sys.stderr.write(f'File "{args.source}" does not exist\n')
         return 1
 
-    args.target.lstrip('.')
     target_file = args.source.rsplit('.', 1)[0]
-    target_file += args.target
+    target_file += '.' + args.target.lstrip('.')
 
     for Converter in converters:
         c = Converter(args.source, target_file)

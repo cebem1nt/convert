@@ -1,5 +1,0 @@
-pillow
-pandas
-openpyxl
-pydub
-moviepy
