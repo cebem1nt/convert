@@ -1,8 +1,9 @@
 #!/bin/env python3
 import argparse, os, sys
 from src.audio import Audio
+from src.images import Image
 
-converters = [Audio]
+converters = [Audio, Image]
 
 def main(args: argparse.Namespace):
     if not os.path.exists(args.source):
