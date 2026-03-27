@@ -1,6 +1,6 @@
 # Convert
 
-A python wrapper script or a _swiss knife_ to convert between different file extensions
+A python wrapper _swiss knife_ script to convert different files extensions
 
 ### Supported file types:
 
