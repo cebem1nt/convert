@@ -1,13 +1,13 @@
-def get_extension(f: str):
-    return f.split('.', maxsplit=1)[-1]
+def get_file_extension(f: str):
+    return f.rsplit('.', maxsplit=1)[-1]
 
 class Converter:
     def __init__(self, source: str, target: str):
-        self.source = (                     # 0 - path
-            source, get_extension(source)   # 1 - extension
+        self.source = (                          # 0 - path
+            source, get_file_extension(source)   # 1 - extension
         )
         self.target = (
-            target, get_extension(target)
+            target, get_file_extension(target)
         )
         self.supported = []
 

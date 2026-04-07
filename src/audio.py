@@ -1,6 +1,8 @@
 from shutil import which
 from src.aconverter import Converter
-import subprocess
+from typing import Optional
+
+import subprocess, os
 
 HAS_PYDUB = True
 HAS_FFMPEG = which("ffmpeg")
