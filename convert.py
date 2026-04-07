@@ -34,9 +34,13 @@ def main(args: argparse.Namespace):
         for Converter in converters:
             c = Converter(src, target_path)
 
-            if c.can_convert():
-                c.convert()
-                break
+            try:
+                if c.can_convert(): c.convert(); break
+
+            except KeyboardInterrupt:
+                sys.stderr.write("Conversion was interrupted!\n")
+                return 1
+
         else:
             print(f"Could not convert {src} to {args.target}, unsupported extension(s)")
 
