@@ -33,7 +33,7 @@ python convert.py file.flac mp3
 
 ## How does it work? 
 
-Scipt checks the file type provided, finds matching global handler and based on the programs you have installed, converts to a target file extension. The script itself does not implement any file parsing / conversion.
+Script checks the file type provided, finds matching global handler and based on the programs you have installed, converts to a target file extension. The script itself does not implement any file parsing / conversion.
 
 ## It does not work?
 
